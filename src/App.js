@@ -2,6 +2,7 @@ import './App.css'
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap'
 import { react, useState } from 'react'
 import Data from './data.js'
+import { Link, Route, Switch } from 'react-router-dom'
 
 function App() {
   const [shoes, setShoes] = useState(Data)
@@ -34,24 +35,47 @@ function App() {
         </Container>
       </Navbar>
 
-      <div className='jumbotron background'>
-        <h1>20% Season OFF</h1>
-        <p>
-          This is a simple hero unit, a simple jumbotron-style component for
-          calling extra attention to featured content or information.
-        </p>
-        <p>
-          <Button variant='primary'>Learn more</Button>
-        </p>
-      </div>
+      <Route exact path='/'>
+        <div>
+          <div className='jumbotron background'>
+            <h1>20% Season OFF</h1>
+            <p>
+              This is a simple hero unit, a simple jumbotron-style component for
+              calling extra attention to featured content or information.
+            </p>
+            <p>
+              <Button variant='primary'>Learn more</Button>
+            </p>
+          </div>
 
-      <div className='container'>
-        <div className='row'>
-          {shoes.map((a, i) => {
-            return <Card shoes={shoes[i]} i={i} />
-          })}
+          <div className='container'>
+            <div className='row'>
+              {shoes.map((a, i) => {
+                return <Card shoes={shoes[i]} i={i} key={i} />
+              })}
+            </div>
+          </div>
         </div>
-      </div>
+      </Route>
+
+      <Route path='/detail'>
+        <div className='container'>
+          <div className='row'>
+            <div className='col-md-6'>
+              <img
+                src='https://codingapple1.github.io/shop/shoes1.jpg'
+                width='100%'
+              />
+            </div>
+            <div className='col-md-6 mt-4'>
+              <h4 className='pt-5'>Title</h4>
+              <p>Description</p>
+              <p>$120</p>
+              <button className='btn btn-danger'>SUBMIT ORDER</button>
+            </div>
+          </div>
+        </div>
+      </Route>
     </div>
   )
 }
