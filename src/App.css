@@ -14,3 +14,8 @@
 .container {
   text-align: center;
 }
+
+.btn {
+  margin-right: 3px;
+  margin-left: 3px;
+}
